@@ -1,0 +1,149 @@
+- Context:: #Coursera
+- Course information::
+    - Images
+        - 
+        - 
+    - Instructor name
+        - Danilo Lessa Bernardineli
+    - __Project description__
+        - 
+    - __Target learner__
+        - 
+    - __Project prerequisites__
+        - Basic Python
+    - __Number of Tasks in Project __
+        - 7
+    - __Expected project length__
+    - __Software needed for Rhyme VM instance__
+        - Ubuntu
+        - Jupyter
+- Project Learning Objects::
+    - Load webpages into Python through requests
+    - Access elements and attributes inside HTML pages
+    - Search for elements with given classes and attributes
+    - Use the browser developer tools as a detective toolkit
+    - Use CSS selectors for searching complex patterns
+    - Send POST, PUT and PATCH data with modified headers
+    - Authenticate and maintain connection state through sessions and cookies
+- Tasks::
+    - Task 1
+        - Learning Objective:: "Load webpages into Python through requests"
+        - Script::
+            - Welcome to the Web Scraping with Python and BeautifulSoup project! My name is Danilo, and I'll be your instructor through the Rhyme Interactive Platform. I'll guide you here through the right panel, while you have your own preconfigured virtual machine on the left panel. 
+            - Through this course, you will learn how to extract data and navigate on patterns from Internet pages, APIs and services through Python, Requests and BeautifulSoup. Those are core knowledges which will expand substantially the scope of what you can do through programming.
+            - For the first task, you are going to learn how to download webpages into Python through requests, so let's get started!
+            - So first, there is a open Jupyter Notebook on your browser. Open the task one notebook, and here at the beginning you have a link pointing to a Wikipedia entry for a city located in the Amazon. This is the page that we are going to download, but let's take a inspection it first - so click on the link.
+            - Okay. As you can see, this is a very trivial page, and when I mean with download it, I'm actually referring to the HTML source code. To have a raw view of it, come with me: go to the menu,  then WebDeveloper, and Source code.
+            - Feel free to pause the video now for getting a feel with the source code, or to explore the Wikipedia article.
+            - Now that you feel comfortable with the web page, I'll show you how to download it on Python. Go back to Jupyter notebook, and let's create a new cell and do our first import: import requests as req. Run it through shift-enter.
+            - Requests is the Python standard library for pulling and pushing data from the web, and it is very comprehensive for a lot of situations. We'll use it through the entire course for doing the actual interface with the internet.
+            - Now, let's declare a variable containing our url, so repeat after me: URL equals copy the above link, paste it. Run it.
+            - After that, I'll introduce you our first command of this course. Type with me: r equals req get URL. Run it. That's it! We only need one simple command for downloading a webpage.
+            - To see that it actually works, type with me again but in a new cell: print r dot content two points one thousand, so that we print the first one thousand characters of the source code. Run it.
+            - Neat isn't? But it is a bit ugly. A way to making it beautiful is through the BeautifulSoup library, which I'll introduce thoroughly on the next task. But let's have a taste of it.
+            - Come with me: from bs4 import beautifulsoup, and then let's create a soup: soup equals beautifulsoup r content. Run it.
+            - And then, in a new block, print soup prettify one thousand. Run it. Way better than before!
+            - Feel free now to pause the video and compare the prettified source code with the one which we saw before when we inspected the URL.
+            - That's it! We have learned how to download the source of web pages through Python, and in the next task we are going to learn how to find elements inside HTML pages through BeautifulSoup. See you soon!
+        - Quiz::
+            - 
+    - Task 2
+        - Learning Objective:: "Access elements and attributes inside HTML pages"
+        - Script::
+            - Welcome back! On this task, we are going to learn how to access elements and attributes inside HTML pages through BeautifulSoup.
+            - So first let me give a intro. BeautifulSoup is a Python library for making it easy to you to navigate and access the HTML source code in a fluid way. It allows you to use selectors and a clear syntax which makes it fit for using for retrieving the data that you want inside the HTML text.
+            - To see what I mean, open the browser and open the task 2 notebook. There is already some blocks there for pulling the webpage that we've seen on the last task. Run all of them.
+            - Let's make use of one of BeautifulSoup capabilities. Open a new block, and type with me: title equals soup h1., and print title. Run it. Can you see that the markdown matches the title of the webpage?
+            - BeautifulSoup allows you to just type the type of the element as if it is a attribute of the soup that we've created while loading the data. To see what I mean, open a new block, a type with me: print soup img. Run it. This one is a element for a autumn photo of the Amazon city.
+            - If you want to experiment a bit before going further, I'll type here at the screen a tiny subset of elements that you can play with for accessing with BeautifulSoup. H2 div ul li table. Feel free to pause the video and play with them.
+            - Now, suppose that you want to access some attribute of the element, like the link to the image for instance. For doing that, just open a new block and type with me: print soup img source. Run it. Accessing a attribute is simple as that. 
+            - You can also access the text description of the image. Just copy the last block, paste in a new one, change source to alt, and run it. Feel free to pause the video now and experiment with other properties.
+            - Until now, it seemed all magical. But what if you got a lot of tables and images in the webpage? Those commands that we've passed only select the first one that appears in the source code.
+            - To mitigate that, we need to make use of the find all command. So open a new block, and let's find for instance all the tables that exists on the link. Tables equals soup find all table. Lets see how much tables there are, so print len tables. Run it.
+            - We have fourteen tables. To see the content of let's say the second one, open a new cell and type print tables one. Run it.
+            - Acessing properties is just as before. Type in a new cell: print tables one style. Run it. This is the CSS style of the second table in the HTML page.
+            - Feel free to pause the video now and to experiment with finding other types of elements, or exploring the other tables.
+            - Now for the last part of this task. BeautifulSoup also allows you to get the children of elements. I'll show you quickly how to do it for the lists on the page.
+            - Open a new block, then type lists equals soup find all li. To get the children of the fourth list, you would type childs equals list lists three children. Then let's print how much children there are: print len childs. Run it.
+            - To see the children, open a new block and type print childs. Run it. You can use the methods that I've showed to you as usual, and feel free to pause the video for trying to access the attributes of them.
+            - So that's it for this task! You now can access HTML elements and attributes through BeautifulSoup, and in the next task we are going to learn how to access elements by class and identifiers. See ya!
+    - Task 3
+        - Learning Objective:: "Search for elements with given classes and attributes"
+        - Script::
+            - Welcome back! On this task, you are going to learn how to find elements that have given classes and attributes, like identifiers and links. This is essential when handling large documents, as they can be difficult to navigate.
+            - As we'll see, the BeautifulSoup find functions have a lot of properties that we can use to input filters and complex behaviour. So to get started, open the task three notebook.
+            - Run all cells, and let's create a new block. Suppose that we want to get all the links inside the Wikipedia article, so type with me: links equals soup find all a, print len links. Run it.
+            - We have nine thousand links. What if we just wanted some of them? Like for instance, open a new block and type links zero five. What would you do if you wanted only the links with the mw jump link class for instance? 
+            - One way is to doing a for loop and test every element by the attribute, but a clever way is to add options into the find all command. To see what I mean, create a new block and type with me. attr filter equals class mw jump link. Soup find all a attr filter. Run it.
+            - Now we have just two links of nine hundred! The find all command takes a dictionary as a input, and we can have a value for each attribute, which is the key.
+            - Actually, we can filter for several attributes at once. Create a new block, copy the last one, paste it, and add a new key value, which is href equals hashtag mw head. Run it. Do you see that now we filter for both at once? Feel free to pause the video now and experiment with other keys and values.
+            - A neat feature of the find all, is that you can also search for elements without knowing the type. To see what I mean, create a new block, and type with me: attr filter equals class no print. This will filter all the elements which are not intended for printing. Now, soup find all None, attr filter. Passing a None argument tells BeautifulSoup to get any element with the given filter. Run it. Do you notice that we have divs, uls and lis?
+            - Also, a good thing to know is that BeautifulSoup can filter the classes as you would expect from CSS. To see what I mean, create a new block, and type with me: attr filter class fn. Soup find all None attr_filter. Run it. Notice that this element have two classes: fn and org, and we only needed to pass one of them for retrieving it.
+            - Lastly, I'll show you how to filter by the element identifier, which is pretty trivial now. Create a new block, and type with me: attr filter id first heading. soup find None attr filter. Run it. That's it!
+            - So now you know how to filter elements by class and attributes, and on the next task we are going to learn how to use the browser developer tools for investigating the webpage structure and dynamics. See ya!
+    - Task 4
+        - Learning Objective:: "Use the browser developer tools as a detective toolkit"
+        - Script::
+            - Welcome back! On this task, you are going to learn how to use the browser developer tools for exploring the structure and the dynamics of a webpage.
+            - As you'll see shortly, the developer tools is a powerful ally that will help you identifying where you need to look in order to scrap the data that you want. The developer tools contains tools like a interactive source code explorer, a JavaScript console, and a network monitor.
+            - To get started, open the task four notebook, and open the link that I've put there. It is the same Wikipedia article that we had been scraping. To open the Dev Tools, go to the upper right corner, click on the menu, go to Web Developer, and Inspector. Alternatively, just type Control Shift I.
+            - There are a lot of tools over there, but the most important ones for scraping are usually the Inspector, the Console and the Network tabs.
+            - Let's start with the inspector. This tab allows you to inspect the page source code in a interactive way. If you hover the mouse around the elements, you can see that the inspector highlights it. This is very powerful for navigating the source code.
+            - Also, the inspector automatically prettifies the HTML and allows you to expand and collapse the elements, making it clearer to read.
+            - One of the most powerful features of the Inspector is to allow you to hover the mouse over a section into the webpage, and to point you to the source. To see what I mean, let's pick for instance the Total area of this city, here at Area total. Click the right button over the number, and select inspect element. And now you have the pointer in the source code. Powerful isn't?
+            - Feel free to pause the video now for getting familiar with the inspector.
+            - Now let's go to the total area element over the source code. Press the right button on it. There are several features over there which could create a guided course only for the inspector, but when doing web scraping the most useful one is the copy css selector one. Click on it.
+            - Now let's go to the console tab, type allow pasting, and paste it now. What we have just copied and pasted is the CSS selector of the total area element. This seems a bit obscure now, but in the next task you are going to use the full power of it.
+            - As for the console tab itself, it is a terminal where you can type Javascript code directly. I'll forgo it for this course, but I still want to show you the Network tab, so go to it.
+            - This one is fundamental for performing more complex scraping tasks. It informs you of everything that has happened while loading the page. You can see all the traffic that is generated while you are navigating around the page, or when submiting a message or a post for instace. 
+            - To see what I mean, keep this network tab open, and go to the top of the page, go to the search button, and type Serra do Mar. Click it. Did you notice the changes in the Network tab?
+            - If you click on XHR, you can inspect all the arguments that you gave and received from the server. It is a lot of things, and I highly recommend you to pause the video now, and inspect the developer tools thoroughly.
+            - So that's it for this task. You now have grasp of how using the Developer tools of the browser. On next task, we are going to use CSS selectors to pull the exact data that we want from the webpage. Bye!
+    - Task 5
+        - Learning Objective:: "Use CSS selectors for searching complex patterns"
+        - Script::
+            - Welcome back! On this task, we are going to learn how to use CSS selectors in order to search for complex patterns in the HTML source code.
+            - CSS selectors is a very powerful feature that is embedded on JavaScript, BeautifulSoup and among others. It provides you a syntax to navigate on the HTML source as if you were applying a style rule. It is kind of a regular expression, but for HTML trees.
+            - When scraping the web for data, one of the most common issues is to identify how to navigate on the page structure, and after this task you'll see how easy it is!
+            - So let's get our hands dirty. Open the task five notebook, open the link that I've provided. This is an Wikipedia article about Rondônia, an place located in the Brazilian Amazon. Now come with me, and let's see Rondônia's climate and hidrography, and suppose that you want that picture on Floresta Nacional do Jamari. What would you do?
+            - Normally, this would involve a lot of source code exploration, but I'll show one of the biggest tricks for web scraping. Selectors. Right click your mouse on the picture, and click on inspect element. See the highlighted section? Right click on it, and go to copy, CSS selector. Go back to the Jupyter notebook.
+            - Now, paste the selector in a new block, like I do: selector equals quotes paste it. Run it.
+            - For using it, open a new block and type with me: soup select selector. Run it. Practical isn't? Feel free to pause the video and compare what you just got in the notebook with the source code on the original page.
+            - The CSS selector uses the same syntax of CSS, and you can select by identifiers, classes, attributes, relative position and much more. As I've said in the beginning, this is really the regular expressions of web scraping.
+            - To select a class for instance, open a new block, and type with me: selector equals dot thumbimage, soup select selector. This will gives us a lot of results, so I'll pass a limit equals three keyword here to get only the first three.
+            - So that's it for this task! You now have grasp of one of the most powerful techniques when performing web scraping. It is simple, but I highly recommend to take your time and play around and explore this selector. Feel free to pause the video and get the selectors of other elements, or to try different combinations of it.
+            - As for the next task, we are going to actually interact with the outside world! You are going to learn how to post data and change headers when sending HTTP requests. See you soon!
+    - Task 6
+        - Learning Objective:: "Send POST, PUT and PATCH data with modified headers"
+        - Script::
+            - Welcome back! On this task, you are going to learn how to send data through the POST, PUT and PATCH HTTP methods as well as changing your headers in the process!
+            - Using HTTP methods is needed when interacting with APIs and with most user interfaces on the web. Also, changing the headers allows you to fine-tune what the server expects when sending the requests.
+            - So let's start our task. Open the task six notebook on your Jupyter environment. I've put there a link for a example RESTful API, and if you click on the link, you can see that it returns some JSON data.
+            - If you want, you can also take the time to enter on the root website, and explore a bit about this API. This is optional, but feel free to pause the video for doing it.
+            - Now, back to the notebook. Run all cells. As you can see, I've already put some code for retrieving the first two elements of the JSON that we get when we navigate to the link with the browser. 
+            - Everytime that you type a URL address at the navigation bar on the browser, you are sending a GET request. But there are other requests which are a bit more invisible. Let's start for instance with the POST one, which is the one that you are going to use the most on real life.
+            - Create a new block. Copy the last one and paste on it. Change get to post. Let's print all the data. Run it. It's really that simple! As you can see, our output has changed.
+            - One thing when doing POST requests, is that normally you would want to pass some arguments. I'll show you how to do that. Copy the last block, create a new cell, paste it, and let's create a dictionary called input data. Type with me title test, user id five. Now let's pass the input data at the post method. Run it. Do you see that it changed? Feel free to pause the video and to change the input data
+            - So, now you know how to send POST requests with arguments, but there are also other HTTP methods too, like put and patch. I'll show you quickly how to do that. Copy the last block, open a new one and paste it. Change post to put.  Run it. For the PATCH method, it is the same thing. Open a new cell, paste and change post to patch, run it again.
+            - For those two, we did not had any output, and this is because we've passed the wrong input data. If you want a out of scope challenge, feel free to take some minutes for exploring the API website and see why.
+            - Now for the last past of the task which is to change headers. So, open a new cell, paste the last post request block again, but now we'll add a new dictionary: headers, which is equals to Content Type application json. This will inform the server that our input data is going to be a JSON.
+            - Now, put headers equals headers in the req dot post. Run it. Boom! error!
+            - What has happened is that we didn't actually send a JSON when doing the post. To mitigate that, copy the last cell, open a new one, and paste it. Wrap the input_data with a json dot dumps, which will turn that dictionary into a string. Run it. Now it worked!
+            - So that's it for this task! You've learned how to create requests with different HTTP methods like POST, PUT and PATCH, and you know how to use custom HTTP headers. On the next task, you are going to learn how to maintain a session through cookies. See you!
+    - Task 7
+        - Learning Objective:: "Authenticate and maintain connection state through sessions and cookies"
+        - Script::
+            - Welcome back! This is the final task of the course, and you are going to learn how to authenticate and websites and maintain your connection state through sessions, which is a manager for internet cookies.
+            - This is an critical skill for making you able to scrap more complex websites, and this will open you a lot of possibilities as to what places you can retrieve your data.
+            - So to get started, open the task seven notebook. I've already put some blocks in there, but first let's open the link that I've put. This is an example of a login page. If you put admin and one two three four five at the login, then the website creates a cookie for maintaining your state. Even if you refresh, the state is maintained.
+            - To see exactly what happens, go back, open the Dev tools through Control Shift I. Go to the network, click preserve log, and log in again. When you do that, your browser first send a POST request to login mode login, with usr and pwd parameters, and then you are redirected to the login mode welcome through a GET request. Feel free to pause the video for inspecting more.
+            - Now let's replicate our browser behaviour on Python. Go back to the Jupyter notebook. Open a new cell, and create a input data dict, and type usr admin, pwd 12345.
+            - Let's post the login details through r post equals req post link plus mode login, input data. And let's retrieve the welcome page through r get equals req get link plus mode welcome. I've written this is logged function make use of BeautifulSoup to see if it is logged in or not. Let's pass it: is logged r get content. Run it.
+            - Not logged! But our user and password are right. To inspect a bit further, let's open a new block, copy the last one and paste it. Remove the r get line, and change the r get in is logged to r post. Run it. Now it is logged! Why?
+            - What is happening here is that we are not maintaining our state. If you refresh the python through the get method, you are losing your logged state.
+            - The solution to that is to use the Session class from requests. It is as simple it could be. Copy the block with get and post methods into a new one, but let's make some changes: type with me: s equals req dot session. And we change the r_post to s post, and r_get to s get. Run it. Now you are logged!
+            - When you instantiate the Session class, every operation that you do through it will store any cookies that is received during the process. Actually, we can simulate a refresh right now. Create a new block, copy the r get line and the islogged line. Run it. Did you see that it is still logged?
+            - Now, compare with doing what we were doing previously. Copy the last block into a new one, and change the s into req. Run it. Not logged!
+            - Feel free to pause the video now and experiment with we just did on this task, like changing the username and the password.
+            - So that's it for this task and for the course! You now have a grasp of the essentials for performing web scraping on any webpage! As you can saw through the course, scraping is a complex subject which involves a variety of skills but also some subjective feeling and creativity, however being able to do all of that is very powerful. This is a skill that will empower you in almost any tech niche, from Data Science to Business and Marketing, and I hope that you've enjoyed this course. 
+            - There are a lot more guided projects like this one on Coursera, and I look forward for our next course. See you soon! Bye bye.
