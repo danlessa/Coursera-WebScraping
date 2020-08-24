@@ -6,17 +6,19 @@
     - Instructor name
         - Danilo Lessa Bernardineli
     - __Project description__
-        - 
+        - By the end of this project, you will have a grasp of the essentials for extracting data from most of the websites on the internet. This includes the usage of BeautifulSoup for getting elements through patterns, Browser DevTools for pattern investigation, and Requests for managing the interface with the servers. This course will be useful for anyone dealing with extracting web data from pages and APIs in a regular basis
     - __Target learner__
-        - 
+        - This guided project is for people that would benefit of being able to extract data from the internet through Python. This of interest to marketers, analysts and data scientists. Basic Python is recommended.
     - __Project prerequisites__
         - Basic Python
     - __Number of Tasks in Project __
         - 7
     - __Expected project length__
+        - 45 min for the guided part + 45 min for practice
     - __Software needed for Rhyme VM instance__
         - Ubuntu
-        - Jupyter
+        - BeautifulSoup
+        - Jupyter Notebooks
 - Project Learning Objects::
     - Load webpages into Python through requests
     - Access elements and attributes inside HTML pages
@@ -30,10 +32,10 @@
         - Learning Objective:: "Load webpages into Python through requests"
         - Script::
             - Welcome to the Web Scraping with Python and BeautifulSoup project! My name is Danilo, and I'll be your instructor through the Rhyme Interactive Platform. I'll guide you here through the right panel, while you have your own preconfigured virtual machine on the left panel. 
-            - Through this course, you will learn how to extract data and navigate on patterns from Internet pages, APIs and services through Python, Requests and BeautifulSoup. Those are core knowledges which will expand substantially the scope of what you can do through programming.
+            - Through this course, you will learn how to extract data and navigate on patterns from Internet pages, APIs and services through Python, Requests and BeautifulSoup. Those are core knowledges which will expand substantially the scope of what you can do through Python.
             - For the first task, you are going to learn how to download webpages into Python through requests, so let's get started!
             - So first, there is a open Jupyter Notebook on your browser. Open the task one notebook, and here at the beginning you have a link pointing to a Wikipedia entry for a city located in the Amazon. This is the page that we are going to download, but let's take a inspection it first - so click on the link.
-            - Okay. As you can see, this is a very trivial page, and when I mean with download it, I'm actually referring to the HTML source code. To have a raw view of it, come with me: go to the menu,  then WebDeveloper, and Source code.
+            - Okay. As you can see, this is a very trivial page, and when I mean with download it, I'm actually referring to the HTML source code. To have a raw view of it, just press control U.
             - Feel free to pause the video now for getting a feel with the source code, or to explore the Wikipedia article.
             - Now that you feel comfortable with the web page, I'll show you how to download it on Python. Go back to Jupyter notebook, and let's create a new cell and do our first import: import requests as req. Run it through shift-enter.
             - Requests is the Python standard library for pulling and pushing data from the web, and it is very comprehensive for a lot of situations. We'll use it through the entire course for doing the actual interface with the internet.
@@ -46,7 +48,11 @@
             - Feel free now to pause the video and compare the prettified source code with the one which we saw before when we inspected the URL.
             - That's it! We have learned how to download the source of web pages through Python, and in the next task we are going to learn how to find elements inside HTML pages through BeautifulSoup. See you soon!
         - Quiz::
-            - 
+            - What of those are libraries associated with web scraping?
+                - requests
+                - BeautifulSoup
+                - os
+                - numpy
     - Task 2
         - Learning Objective:: "Access elements and attributes inside HTML pages"
         - Script::
@@ -61,12 +67,18 @@
             - Until now, it seemed all magical. But what if you got a lot of tables and images in the webpage? Those commands that we've passed only select the first one that appears in the source code.
             - To mitigate that, we need to make use of the find all command. So open a new block, and let's find for instance all the tables that exists on the link. Tables equals soup find all table. Lets see how much tables there are, so print len tables. Run it.
             - We have fourteen tables. To see the content of let's say the second one, open a new cell and type print tables one. Run it.
-            - Acessing properties is just as before. Type in a new cell: print tables one style. Run it. This is the CSS style of the second table in the HTML page.
+            - To access properties is simple. Suppose that we want the style of this table, so we would write: print tables one style. Run it. This is the CSS style of the second table in the HTML page.
             - Feel free to pause the video now and to experiment with finding other types of elements, or exploring the other tables.
             - Now for the last part of this task. BeautifulSoup also allows you to get the children of elements. I'll show you quickly how to do it for the lists on the page.
             - Open a new block, then type lists equals soup find all li. To get the children of the fourth list, you would type childs equals list lists three children. Then let's print how much children there are: print len childs. Run it.
             - To see the children, open a new block and type print childs. Run it. You can use the methods that I've showed to you as usual, and feel free to pause the video for trying to access the attributes of them.
             - So that's it for this task! You now can access HTML elements and attributes through BeautifulSoup, and in the next task we are going to learn how to access elements by class and identifiers. See ya!
+        - Quiz::
+            - What are valid methods for getting an div element through BeautifulSoup?
+                - soup.get_all(`div`)
+                - soup.find(`div`)
+                - soup.find_all(`div`)
+                - soup.div
     - Task 3
         - Learning Objective:: "Search for elements with given classes and attributes"
         - Script::
@@ -77,7 +89,7 @@
             - One way is to doing a for loop and test every element by the attribute, but a clever way is to add options into the find all command. To see what I mean, create a new block and type with me. attr filter equals class mw jump link. Soup find all a attr filter. Run it.
             - Now we have just two links of nine hundred! The find all command takes a dictionary as a input, and we can have a value for each attribute, which is the key.
             - Actually, we can filter for several attributes at once. Create a new block, copy the last one, paste it, and add a new key value, which is href equals hashtag mw head. Run it. Do you see that now we filter for both at once? Feel free to pause the video now and experiment with other keys and values.
-            - A neat feature of the find all, is that you can also search for elements without knowing the type. To see what I mean, create a new block, and type with me: attr filter equals class no print. This will filter all the elements which are not intended for printing. Now, soup find all None, attr filter. Passing a None argument tells BeautifulSoup to get any element with the given filter. Run it. Do you notice that we have divs, uls and lis?
+            - A neat feature of the find all, is that you can also search for elements without knowing the type. To see what I mean, create a new block, and type with me: attr filter equals class noprint. This will filter all the elements which are not intended for printing. Now, soup find all None, attr filter. Passing a None argument tells BeautifulSoup to get any element with the given filter. Run it. Do you notice that we have divs, uls and lis?
             - Also, a good thing to know is that BeautifulSoup can filter the classes as you would expect from CSS. To see what I mean, create a new block, and type with me: attr filter class fn. Soup find all None attr_filter. Run it. Notice that this element have two classes: fn and org, and we only needed to pass one of them for retrieving it.
             - Lastly, I'll show you how to filter by the element identifier, which is pretty trivial now. Create a new block, and type with me: attr filter id first heading. soup find None attr filter. Run it. That's it!
             - So now you know how to filter elements by class and attributes, and on the next task we are going to learn how to use the browser developer tools for investigating the webpage structure and dynamics. See ya!
@@ -85,7 +97,7 @@
         - Learning Objective:: "Use the browser developer tools as a detective toolkit"
         - Script::
             - Welcome back! On this task, you are going to learn how to use the browser developer tools for exploring the structure and the dynamics of a webpage.
-            - As you'll see shortly, the developer tools is a powerful ally that will help you identifying where you need to look in order to scrap the data that you want. The developer tools contains tools like a interactive source code explorer, a JavaScript console, and a network monitor.
+            - As you'll see shortly, the developer tools is a powerful ally that will help you identifying where you need to look in order to scrap the data that you want. The developer tools contains things like a interactive source code explorer, a JavaScript console, and a network monitor.
             - To get started, open the task four notebook, and open the link that I've put there. It is the same Wikipedia article that we had been scraping. To open the Dev Tools, go to the upper right corner, click on the menu, go to Web Developer, and Inspector. Alternatively, just type Control Shift I.
             - There are a lot of tools over there, but the most important ones for scraping are usually the Inspector, the Console and the Network tabs.
             - Let's start with the inspector. This tab allows you to inspect the page source code in a interactive way. If you hover the mouse around the elements, you can see that the inspector highlights it. This is very powerful for navigating the source code.
@@ -133,7 +145,7 @@
     - Task 7
         - Learning Objective:: "Authenticate and maintain connection state through sessions and cookies"
         - Script::
-            - Welcome back! This is the final task of the course, and you are going to learn how to authenticate and websites and maintain your connection state through sessions, which is a manager for internet cookies.
+            - Welcome back! This is the final task of the course, and you are going to learn how to authenticate and maintain your connection state through sessions, which is a manager for internet cookies.
             - This is an critical skill for making you able to scrap more complex websites, and this will open you a lot of possibilities as to what places you can retrieve your data.
             - So to get started, open the task seven notebook. I've already put some blocks in there, but first let's open the link that I've put. This is an example of a login page. If you put admin and one two three four five at the login, then the website creates a cookie for maintaining your state. Even if you refresh, the state is maintained.
             - To see exactly what happens, go back, open the Dev tools through Control Shift I. Go to the network, click preserve log, and log in again. When you do that, your browser first send a POST request to login mode login, with usr and pwd parameters, and then you are redirected to the login mode welcome through a GET request. Feel free to pause the video for inspecting more.
